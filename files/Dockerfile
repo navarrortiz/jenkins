@@ -1,5 +1,6 @@
 FROM ubuntu:14.04
 
+RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get update -y
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y openssl openssh-client tar xz-utils wget git curl zip bzip2 
@@ -10,6 +11,7 @@ RUN rm -rf /var/lib/apt/lists/*
 ###########################################################################################################
 
 RUN add-apt-repository ppa:saiarcot895/myppa
+RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get update -y
 RUN apt-get -y install apt-fast
 
@@ -18,6 +20,7 @@ RUN apt-get -y install apt-fast
 ###########################################################################################################
 
 RUN echo -e "" | add-apt-repository ppa:webupd8team/java
+RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get update -y 
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
@@ -180,6 +183,7 @@ RUN apt-get install sqlite3 libsqlite3-dev
 # ANSIBLE
 ###########################################################################################################
 RUN apt-add-repository -y ppa:ansible/ansible
+RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get -y update
 RUN apt-get -y install ansible openssh-client
 
